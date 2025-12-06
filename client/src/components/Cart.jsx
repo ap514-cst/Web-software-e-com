@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaTrash, FaPlus, FaMinus } from 'react-icons/fa';
 import { removeFromCart, updateCartQuantity, clearCart } from '../features/cartSlice';
-
+import { Link } from 'react-router-dom';
 const Cart = () => {
   const dispatch = useDispatch();
   const { items, total } = useSelector((state) => state.cart);
@@ -101,7 +101,7 @@ const Cart = () => {
             </div>
             
             <button className="w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition">
-              Checkout Now
+              <Link to='/checkout'>CheckOut list</Link>
             </button>
           </div>
         </>

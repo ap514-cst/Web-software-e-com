@@ -6,6 +6,7 @@ import ProductList from './components/ProductList';
 import Cart from './components/Cart';
 import Dashboard from './components/Dashboard';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { Outlet } from 'react-router-dom';
 
 
 
@@ -100,6 +101,7 @@ const Home =()=> {
           
         </main>
       </div>
+      <Outlet/>
       
     </div>
   );
