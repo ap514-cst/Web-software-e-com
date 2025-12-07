@@ -31,4 +31,27 @@ const register=async(req,res)=>{
     }
 }
 
-module.exports={register}
+const findUser=async(req,res)=>{
+    try {
+        
+        const users=await userModel.find()
+        if(users){
+            res.status(202).json({
+                sucecess:true,
+                message:"user data found",
+                users:users
+            })
+        }
+    } catch (error) {
+        console.log(error);
+        res.states(500).json({
+            message:"internel server is down"
+        })
+
+    }
+}
+
+module.exports={
+    register,
+    findUser
+}

@@ -1,48 +1,41 @@
-import { useState } from 'react'
-import { useNavigate } from "react-router-dom"
+import React from 'react'
 
-
-const SingIn = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("")
-
-  const navigate = useNavigate()
-  const handlerSubmit = async (e) => {
-    e.preventDefault()
-
-
-    let res = await fetch("http://localhost:3000/api/user/reg", {
-      method: "Post",
-      body: JSON.stringify({ name, email, password }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-
-    })
-    res = await res.json();
-    console.log(res);
-  
-    localStorage.setItem("users", JSON.stringify(res))
-    alert("login successfull")
-    navigate("/home")
-      
+const Register = () => {
+     const [name, setName] = useState("");
+      const [email, setEmail] = useState("");
+      const [password, setPassword] = useState("")
     
-
-
-
-  }
-
-
-
-
-
-
+      const navigate = useNavigate()
+      const handlerSubmit = async (e) => {
+        e.preventDefault()
+    
+    
+        let res = await fetch("http://localhost:3000/api/user/reg", {
+          method: "Post",
+          body: JSON.stringify({ name, email, password }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+    
+        })
+        res = await res.json();
+        console.log(res);
+      
+        localStorage.setItem("users", JSON.stringify(res))
+        alert("login successfull")
+        navigate("/home")
+          
+        
+    
+    
+    
+      }
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div>
+      <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Create your account
+          Register  
         </h2>
       </div>
 
@@ -125,8 +118,8 @@ const SingIn = () => {
         </div>
       </div>
     </div>
-  );
-};
+    </div>
+  )
+}
 
-
-export default SingIn
+export default Register

@@ -11,7 +11,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded())
 app.use("/api/user",userRoute)
-app.use("/api/users/",adminRoute)
+app.use("/api",adminRoute)
 //import port.
 const PORT=process.env.PORT || 4001;
 const MONGO_URI=process.env.MONGO_URI;
