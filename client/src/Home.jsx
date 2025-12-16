@@ -10,7 +10,7 @@ import { Outlet } from 'react-router-dom';
 
 
 
-const Home =({setIsAuthenticated})=> {
+const Home =()=> {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [activeView, setActiveView] = useState('dashboard');
   const { activeCategory } = useSelector((state) => state.products);

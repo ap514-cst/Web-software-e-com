@@ -37,7 +37,7 @@ const Header = () => {
             </div>
             <div>
               <p className="font-medium">Welcome</p>
-              <p className="text-sm text-gray-500"><p className='text-red-500'>{user.name}</p></p>
+              <p className="text-sm text-gray-500">{user.name}</p>
             </div>
           </div>
         </div>

@@ -21,8 +21,8 @@ const Sidebar = () => {
       {/* Logo Section */}
       <div className="p-6 border-b border-gray-700">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
-            <span className="font-bold text-xl">sam</span>
+          <div className="w-20 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+            <span className="font-bold ">Shoper</span>
           </div>
           <div>
             <h1 className="text-xl font-bold"></h1>
