@@ -10,7 +10,7 @@ import { Outlet } from 'react-router-dom';
 
 
 
-const Home =()=> {
+const Home =({setIsAuthenticated})=> {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [activeView, setActiveView] = useState('dashboard');
   const { activeCategory } = useSelector((state) => state.products);
@@ -26,8 +26,10 @@ const Home =()=> {
       default:
         return <Dashboard />;
     }
+    
   };
 
+ 
   
 
   return (

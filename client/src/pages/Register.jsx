@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Register = () => {
+const Register = ({setIsAuthenticated}) => {
      const [name, setName] = useState("");
       const [email, setEmail] = useState("");
       const [password, setPassword] = useState("")
@@ -24,7 +24,7 @@ const Register = () => {
         localStorage.setItem("users", JSON.stringify(res))
         alert("login successfull")
         navigate("/home")
-          
+         setIsAuthenticated(true) 
         
     
     
@@ -104,6 +104,7 @@ const Register = () => {
 
             {/* Submit Button */}
             <div>
+              <h1>Gust user</h1>
               <button
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

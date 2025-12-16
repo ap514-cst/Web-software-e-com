@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+const bcrypit=require("bcryptjs")
 const adminRouter = async (req, res) => {
   try {
     const { email, password } = req.body;

@@ -1,33 +1,61 @@
 const userModel=require("../model/user.Model");
-
-const register=async(req,res)=>{
+const bcrypt=require("bcryptjs")
+const register = async (req, res) => {
     try {
-        const {
+        const { name, email, password } = req.body;
+
+        // Validation
+        if (!name || !email || !password) {
+            return res.status(400).json({
+                success: false,
+                message: "All fields are required: name, email, password"
+            });
+        }
+
+        // Check if user already exists
+        const existingUser = await userModel.findOne({ email });
+        if (existingUser) {
+            return res.status(409).json({
+                success: false,
+                message: "Email already exists"
+            });
+        }
+
+        // Hash the password
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        // Create new user with hashed password
+        const newUser = new userModel({
             name,
             email,
-            password}=req.body;
-        const exjisUser=await userModel.findOne({email});
-        if(exjisUser){
-            return res.json({
-                message:"email already exjist"
-            })
-        }
-        const addUser=new userModel({name,email,password})
-        const newUser=await addUser.save()
-        if(newUser){
-            res.status(202).json({
-                succesu:true,
-                message:"succefull data send database",
-                newUser
-            })
-        }
-        
+            password: hashedPassword // Store hashed password
+        });
+
+        // Save user to database
+        const savedUser = await newUser.save();
+
+        // Remove password from response for security
+        const userResponse = {
+            _id: savedUser._id,
+            name: savedUser.name,
+            email: savedUser.email,
+            
+        };
+
+        return res.status(201).json({
+            success: true,
+            message: "User registered successfully",
+            user: userResponse
+        });
+
     } catch (error) {
-        console.log(error);
-        res.states(500).json({
-            message:"internel server is down "
-        })
-        
+        console.error("Registration error:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error",
+            error: process.env.NODE_ENV === 'development' ? error.message : undefined
+        });
     }
 }
 

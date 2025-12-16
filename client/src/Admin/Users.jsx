@@ -5,7 +5,7 @@ const Users = ({users}) => {
     
   return (
     <div className="p-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Table */}
         <div className="border border-gray-300 rounded overflow-hidden">
           
@@ -23,7 +23,7 @@ const Users = ({users}) => {
               <div className="grid grid-cols-4 hover:bg-gray-50">
                 <div className="p-3 text-gray-500 border-r border-gray-300">{name}</div>
                 <div className="p-3 w-fit text-gray-500 border-r border-gray-300">{email}</div>
-                <div className="p-3 text-gray-500 border-r text-center border-gray-300">{password}</div>
+                <div className="p-3 text-gray-500 border-r text-center max-w-2xl border-gray-300"><span className=''>{password}</span></div>
                 <div className="p-3">
                   <button
                     

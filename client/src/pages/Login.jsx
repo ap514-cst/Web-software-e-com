@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate,Link } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 
 
 const SingIn = () => {
@@ -22,12 +22,12 @@ const SingIn = () => {
     })
     res = await res.json();
     console.log(res);
-  
+
     localStorage.setItem("users", JSON.stringify(res))
     alert("login successfull")
     navigate("/home")
-      
-    
+
+
 
 
 
@@ -42,7 +42,7 @@ const SingIn = () => {
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          SingIn 
+          SingIn
         </h2>
       </div>
 
@@ -111,7 +111,11 @@ const SingIn = () => {
 
             {/* Submit Button */}
             <div>
-              <span className='text-orange-600'><u><Link to={'adminLogin'}>Admin</Link></u></span>
+              <div  className='flex justify-around'>
+                <span className='text-orange-600'><u><Link to={'adminLogin'}>Admin</Link></u></span>
+                <br />
+                <span className='text-orange-600'><u><Link to={'home'}>Guest users</Link></u></span>
+              </div>
               <button
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
